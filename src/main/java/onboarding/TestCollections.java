@@ -98,5 +98,17 @@ public class TestCollections {
 
 			System.out.println("arraylist: " + al);
 			System.out.println("linkedlist: " + al2);
+			
+			TestInterface i = new TestInterfaceImpl();
+			i.getAge();
+			TestInterface i2 = new Impl1();
+			i2.getAge();
+			
+			// A dg can goi 1 method XYZ() cua module do thang B code
+			// B define interface
+			
+			// Abstract trong java the hien ntn?
+			// Abstract super-sub
+			
 		}
 }
