@@ -66,7 +66,11 @@ public class TestCollections {
 			map1.put(4, "A");
 			map1.put(5, "A");
 
-			// LinkList and ArrayList
+			// LinkedList and ArrayList: [1,2,3,4,5]
+			// random-access 
+			// arrayList.get(3) => 4: 1 step => O(1)
+			// linkedList.get(3): 0 => 1 => 2 => 3: 4 steps => O(4)
+			// index [2] previous => [1], next => [3]
 			/*
 			 * Arraylist maintain indices like arrays. So if want more frequent get
 			 * operations than put then arraylist is best to go.
