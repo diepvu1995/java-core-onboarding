@@ -58,12 +58,21 @@ public class ImporttantClasses {
 		java.util.Collections.sort(sortedCarBrands);
 		return sortedCarBrands;
 	}
-	//TODO sort map key value
-	
-	//public List question6(List carPrices){
-		//TODO: reverse return void, ? where reverse?
-		//java.util.Collections.reverse();
-	//}
+
+	public List question(Map carPrices) {
+		List<String> sortKeyValueOfCar = new Vector<String>();
+		return sortKeyValueOfCar;
+	}
+
+	// TODO sort map key value
+
+	public List question6(Map carPrices) {
+		List<String> sortedCarBrands = new Vector<String>();
+		sortedCarBrands.addAll(carPrices.keySet());
+		// TODO: reverse return void, ? where reverse?
+		java.util.Collections.reverse(sortedCarBrands);
+		return sortedCarBrands;
+	}
 
 	public static void main(String[] args) {
 		ImporttantClasses im = new ImporttantClasses();
@@ -87,6 +96,9 @@ public class ImporttantClasses {
 
 		List sortedCarBrand = im.question5(carPrices);
 		System.out.println(sortedCarBrand);
+
+		List sortedCarBrandss = im.question6(carPrices);
+		System.out.println(sortedCarBrandss);
 
 	}
 }
