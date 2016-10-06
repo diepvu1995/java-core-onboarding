@@ -74,7 +74,20 @@ public class ImporttantClasses {
 		return sortedCarBrands;
 	}
 
+	public static void question7() {
+		Map<String, Integer> otherCarPricesMap = new HashMap<String, Integer>();
+		otherCarPricesMap.put("BMW", 70000);
+		otherCarPricesMap.put("Honda-Civic", 31000);
+		otherCarPricesMap.put("Audi", 90000);
+
+		for (Map.Entry<String, Integer> e : otherCarPricesMap.entrySet()) {
+			System.out.println("[" + e.getKey() + ":" + e.getValue() + "]");
+		}
+
+	}
+
 	public static void main(String[] args) {
+		
 		ImporttantClasses im = new ImporttantClasses();
 		List list = im.question1();
 		for (int i = 0; i < list.size(); i++) {
@@ -99,6 +112,7 @@ public class ImporttantClasses {
 
 		List sortedCarBrandss = im.question6(carPrices);
 		System.out.println(sortedCarBrandss);
+		ImporttantClasses.question7();
 
 	}
 }
