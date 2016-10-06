@@ -46,8 +46,8 @@ public class ImporttantClasses {
 		while (itr.hasNext()) {
 			Entry element = (Entry) itr.next();
 			// TODO: fix priceOfAllCar, thieu ki tu
-			priceOfAllCar = "[" + element.getKey() + "(" + element.getValue()
-					+ ")]";
+			priceOfAllCar = element.getKey() + "(" + element.getValue()
+					+ ")," + priceOfAllCar;
 		}
 		return priceOfAllCar;
 	}
