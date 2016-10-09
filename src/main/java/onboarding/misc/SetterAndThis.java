@@ -1,4 +1,4 @@
-package onboarding;
+package onboarding.misc;
 
 class Frog {
 	private String name;

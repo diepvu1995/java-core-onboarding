@@ -1,4 +1,4 @@
-package onboarding;
+package onboarding.misc;
 
 import java.util.Arrays;
 import java.util.Collection;
