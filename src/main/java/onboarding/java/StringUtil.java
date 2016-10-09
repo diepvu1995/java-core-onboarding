@@ -1,6 +1,5 @@
 package onboarding.java;
 
-
 public class StringUtil {
 
 	public int findSubString(String parentStr, String subStr) {
@@ -16,9 +15,9 @@ public class StringUtil {
 			boolean isSensitive) {
 		// isSensitive = false, khong phan biet hoa thuong, tim vi tri binh
 		// thuong
-		// false: chuyen 2 chuoi ve hoa hoac ve Chu thuong, roi di tim vi tri
+		// true: chuyen 2 chuoi ve hoa hoac ve Chu thuong, roi di tim vi tri
 
-		if (isSensitive == true) {
+		if (isSensitive == false) {
 			return parentStr.lastIndexOf(subStr);
 		} else {
 			String a = parentStr.toLowerCase();
@@ -65,27 +64,29 @@ public class StringUtil {
 		return originalStr;
 
 	}
-	
-	public static String reverse(String originalStr){
+
+	public static String reverse(String originalStr) {
 		String string = originalStr;
 		String newOriginalStr = new StringBuffer(string).reverse().toString();
 		return newOriginalStr;
 
 	}
-	
+
 	/**
 	 * Split the parent string into sub-string by delimeter
+	 * 
 	 * @param originalStr
 	 * @param delimeter
 	 * @return
 	 */
 	public static String[] split(String originalStr, char delimeter) {
-		if(originalStr.contains("-")){
-			String[] parts = originalStr.split("delimeter");
-		}else{
-			 throw new IllegalArgumentException("chuoi " + originalStr + " khong co -");
+		if (originalStr.contains(delimeter)) {
+			String[] parts = originalStr.split(delimeter);
+			return parts;
+		} else {
+			throw new IllegalArgumentException("chuoi " + originalStr
+					+ " khong co -");
 		}
-
 	}
 
 	public static void main(String[] args) {
@@ -103,7 +104,7 @@ public class StringUtil {
 		System.out.println(transform);
 
 		int position = StringUtil.findSubString("Hello world ,hello Reader",
-				"hello", false);
+				"Hello", false);
 		System.out.println(position);
 
 		StringBuilder stringBuilder = StringUtil
@@ -112,9 +113,10 @@ public class StringUtil {
 
 		String removeChar = StringUtil.removeChar("Hello", 'e');
 		System.out.println(removeChar);
-		
+
 		String reverse = StringUtil.reverse("this is java");
 		System.out.println(reverse);
-	}
 
+		// String[] split = StringUtil.split("this-is-Java", '-');
+	}
 }
