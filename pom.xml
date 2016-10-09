@@ -35,7 +35,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>onboarding.TestCollections</mainClass>
+					<mainClass>onboarding.java.StringUtil</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>
