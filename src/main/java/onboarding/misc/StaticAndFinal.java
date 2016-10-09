@@ -1,4 +1,4 @@
-package onboarding;
+package onboarding.misc;
 
 class Thing {
 	public final static int LUCKY_NUMBER = 7;

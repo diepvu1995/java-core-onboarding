@@ -1,4 +1,4 @@
-package onboarding;
+package onboarding.misc;
 
 public class Impl1 implements TestInterface {
 
