@@ -43,9 +43,7 @@ public class ImporttantClasses {
 		Iterator itr = entries.iterator();
 		while (itr.hasNext()) {
 			Entry element = (Entry) itr.next();
-			// TODO: fix priceOfAllCar, thieu ki tu
-			priceOfAllCar = element.getKey() + "(" + element.getValue()
-					+ ")," + priceOfAllCar;
+			priceOfAllCar += element.getKey() + "(" + element.getValue() + "),";
 		}
 		return priceOfAllCar;
 	}
@@ -67,7 +65,6 @@ public class ImporttantClasses {
 	public List question6(Map carPrices) {
 		List<String> sortedCarBrands = new Vector<String>();
 		sortedCarBrands.addAll(carPrices.keySet());
-		// TODO: reverse return void, ? where reverse?
 		java.util.Collections.reverse(sortedCarBrands);
 		return sortedCarBrands;
 	}
@@ -85,7 +82,7 @@ public class ImporttantClasses {
 	}
 
 	public static void main(String[] args) {
-		
+
 		ImporttantClasses im = new ImporttantClasses();
 		List list = im.question1();
 		for (int i = 0; i < list.size(); i++) {

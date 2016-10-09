@@ -7,29 +7,31 @@ import onboarding.java.StringUtil;
  *
  */
 public class App {
-    public static void main(String[] args) {
-        StringUtil stringUtil = new StringUtil();
-        int a = stringUtil.findSubString("Hello world ,Hello Reader", "Hello");
-        System.out.println(a);
-
-        String upper = StringUtil.upper("this-is-Java");
-        System.out.println(upper);
-
-        String lower = StringUtil.lower("this-is-Java");
-        System.out.println(lower);
-        String transform = StringUtil.transform("Hello world ,Hello Reader", "UP");
-        System.out.println(transform);
-
-        int position = StringUtil.findSubString("Hello world ,hello Reader", "hello", false);
-        System.out.println(position);
-
-        StringBuilder stringBuilder = StringUtil.removeCharAt("this is java", 3);
-        System.out.println(stringBuilder);
-
-        String removeChar = StringUtil.removeChar("Hello", 'e');
-        System.out.println(removeChar);
-
-        String reverse = StringUtil.reverse("this is java");
-        System.out.println(reverse);
-    }
+	public static void main(String[] args) {
+		StringUtil stringUtil = new StringUtil();
+		System.out.println("=====findSubString=====");
+		System.out.println(stringUtil.findSubString(
+				"Hello world ,Hello Reader", "Hello"));
+		System.out.println("=====Upper=====");
+		System.out.println(StringUtil.upper("this-is-Java"));
+		System.out.println("=====Lower=====");
+		System.out.println(StringUtil.lower("this-is-Java"));
+		System.out.println("=====Transform=====");
+		System.out.println(StringUtil.transform("Hello world ,Hello Reader",
+				"UP"));
+		System.out.println("=====FindSubString with case-sensitive======");
+		System.out.println(StringUtil.findSubString(
+				"Hello world ,hello Reader", "hello", false));
+		System.out.println("=====removeChatAt=====");
+		System.out.println(StringUtil.removeCharAt("this is java", 3));
+		System.out.println("=====removeChar=====");
+		System.out.println(StringUtil.removeChar("Hello", 'e'));
+		System.out.println("=====reverse=====");
+		System.out.println(StringUtil.reverse("this is java"));
+		System.out.println("=====Split====");
+		String[] split = StringUtil.split("this-is-Java", 's');
+		for (int i = 0; i < split.length; i++) {
+			System.out.println(split[i]);
+		}
+	}
 }
