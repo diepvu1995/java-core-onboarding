@@ -1,4 +1,4 @@
-package onboarding;
+package onboarding.misc;
 
 import java.util.ArrayList;
 import java.util.HashMap;

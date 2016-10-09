@@ -35,7 +35,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>onboarding.java.StringUtil</mainClass>
+					<mainClass>onboarding.App</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>

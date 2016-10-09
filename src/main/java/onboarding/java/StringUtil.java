@@ -17,9 +17,11 @@ public class StringUtil {
 		// thuong
 		// true: chuyen 2 chuoi ve hoa hoac ve Chu thuong, roi di tim vi tri
 
-		if (isSensitive == false) {
+		// TODO line 22 => if(isSensitive)
+		if (isSensitive == true) {
 			return parentStr.lastIndexOf(subStr);
 		} else {
+			// TODO viet 3 line 26->28 thanh 1 line
 			String a = parentStr.toLowerCase();
 			String b = subStr.toLowerCase();
 			return a.lastIndexOf(b);
@@ -35,6 +37,7 @@ public class StringUtil {
 	}
 
 	public static String removeChar(String parentStr, char removeChar) {
+		// TODO dung ham replace() cua String class
 		String r = "";
 		for (int i = 0; i < parentStr.length(); i++) {
 			if (parentStr.charAt(i) != removeChar)
@@ -52,7 +55,8 @@ public class StringUtil {
 	}
 
 	public static String transform(String originalStr, String targetCase) {
-
+		// TODO 1. su dung switch case o day la khong hop ly
+		// TODO 2. su dung solution chi can 1 line of code
 		switch (targetCase) {
 		case "UP":
 			return originalStr.toUpperCase();
@@ -66,10 +70,10 @@ public class StringUtil {
 	}
 
 	public static String reverse(String originalStr) {
+		// TODO tai sao phai khai bao bien [string] o day?
 		String string = originalStr;
 		String newOriginalStr = new StringBuffer(string).reverse().toString();
 		return newOriginalStr;
-
 	}
 
 	/**
@@ -87,36 +91,5 @@ public class StringUtil {
 			throw new IllegalArgumentException("chuoi " + originalStr
 					+ " khong co -");
 		}
-	}
-
-	public static void main(String[] args) {
-		StringUtil stringUtil = new StringUtil();
-		int a = stringUtil.findSubString("Hello world ,Hello Reader", "Hello");
-		System.out.println(a);
-
-		String upper = StringUtil.upper("this-is-Java");
-		System.out.println(upper);
-
-		String lower = StringUtil.lower("this-is-Java");
-		System.out.println(lower);
-		String transform = StringUtil.transform("Hello world ,Hello Reader",
-				"UP");
-		System.out.println(transform);
-
-		int position = StringUtil.findSubString("Hello world ,hello Reader",
-				"Hello", false);
-		System.out.println(position);
-
-		StringBuilder stringBuilder = StringUtil
-				.removeCharAt("this is java", 3);
-		System.out.println(stringBuilder);
-
-		String removeChar = StringUtil.removeChar("Hello", 'e');
-		System.out.println(removeChar);
-
-		String reverse = StringUtil.reverse("this is java");
-		System.out.println(reverse);
-
-		// String[] split = StringUtil.split("this-is-Java", '-');
 	}
 }

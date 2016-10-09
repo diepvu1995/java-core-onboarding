@@ -1,4 +1,4 @@
-package onboarding;
+package onboarding.misc;
 class Machine {
 	private String name;
 	private int code;

@@ -1,4 +1,4 @@
-package onboarding;
+package onboarding.misc;
 
 class Robot {
 	public void speak(String text) {
