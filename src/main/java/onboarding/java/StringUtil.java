@@ -27,15 +27,17 @@ public class StringUtil {
 	}
 
 	/**
-	 * Remove a character from parent string.
+	 * remove a character from parent string.
 	 * 
 	 * @param parentStr
 	 * @param index
+	 *            }
 	 * @return a newString after remove oldString in index
 	 */
 	public static String removeCharAt(String parentStr, int index) {
-		StringBuilder subStr = new StringBuilder(parentStr);
-		return subStr.deleteCharAt(index).toString();
+		// StringBuilder subStr = new StringBuilder(parentStr);
+		// return subStr.deleteCharAt(index).toString();
+		return new StringBuilder(parentStr).deleteCharAt(index).toString();
 	}
 
 	/**
