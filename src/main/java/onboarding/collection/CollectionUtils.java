@@ -161,9 +161,10 @@ public class CollectionUtils {
 	 */
 	public static boolean find6(List<Integer> nums) {
 		List<Integer> findArray = new ArrayList<Integer>(nums);
+		//findArray.stream().filter(e -> e.intValue() == 6).findFirst().get();
 		// tim vi tri lan suat hien dau tien cua doi tuong 6.
 		int posOf6 = findArray.indexOf(new Integer(6));
-		return (posOf6 == 0 || posOf6 == findArray.size()) ? true : false;
+		return (posOf6 == 0 || posOf6 == findArray.size()-1) ? true : false;
 	}
 
 	/**
