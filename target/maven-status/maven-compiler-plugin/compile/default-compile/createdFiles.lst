@@ -15,6 +15,7 @@ onboarding\misc\Contructor.class
 onboarding\misc\SetterAndThis.class
 onboarding\misc\TestInterface.class
 onboarding\misc\Thing.class
+onboarding\collection\CollectionUtils$1.class
 onboarding\misc\StaticAndFinal.class
 onboarding\collection\HashMap.class
 onboarding\misc\ImporttantClasses.class
@@ -29,6 +30,7 @@ onboarding\java\TutForLoop.class
 onboarding\java\TutScannerIO.class
 onboarding\java\TutSwitch.class
 onboarding\App.class
+onboarding\collection\CollectionUtils.class
 onboarding\java\TutMultiDimensionalArrays.class
 onboarding\misc\Frog.class
 onboarding\misc\TestInterfaceImpl.class
