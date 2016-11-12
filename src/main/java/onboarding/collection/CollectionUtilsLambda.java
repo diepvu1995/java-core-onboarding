@@ -3,6 +3,7 @@ package onboarding.collection;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import org.junit.Assert;
 
@@ -56,10 +57,9 @@ public class CollectionUtilsLambda {
      * @return
      */
     public static boolean find6(List<Integer> nums) {
-        List<Integer> findArray = new ArrayList<Integer>(nums);
-        // tim vi tri lan suat hien dau tien cua doi tuong 6.
-        int posOf6 = nums.stream().filter(element -> element.intValue() == 6).findFirst().get();
-        return (posOf6 == 0 || posOf6 == findArray.size() - 1) ? true : false;
+        return IntStream.range(0, nums.size())
+                .filter(index -> (nums.get(index).intValue() == 6) && (index == 0 || index == nums.size() - 1))
+                .count() > 0;
     }
 }
 
