@@ -1,8 +1,13 @@
 package onboarding;
 
+import java.util.Arrays;
+
+import org.junit.Assert;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import onboarding.collection.CollectionUtilsLambda;
 
 /**
  * Unit test for simple App.
@@ -30,5 +35,11 @@ public class AppTest extends TestCase {
      */
     public void testApp() {
         assertTrue(true);
+    }
+
+    CollectionUtilsLambda lambda;
+
+    public void testFind6_true() {
+        Assert.assertEquals(true, lambda.find6(Arrays.asList(1, 2, 3, 4, 6)));
     }
 }
