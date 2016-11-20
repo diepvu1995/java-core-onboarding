@@ -11,6 +11,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import onboarding.collection.CollectionUtilsLambda;
 import onboarding.collection.CollectionUtilsLambda.Album;
+import onboarding.java.ArrayUtil;
 
 /**
  * Unit test for simple App.
@@ -103,6 +104,11 @@ public class AppTest extends TestCase {
 		Assert.assertEquals(1, result.size());
 		Assert.assertEquals("start", result.get(0).name);
 		Assert.assertEquals(4, result.get(0).track.get(0).rating);
+	}
 
+	public void testClumps_1() {
+		int[] arrayClumps = { 1, 1, 1, 1, 1 };
+		int result = ArrayUtil.countClumps(arrayClumps);
+		Assert.assertEquals(1, result);
 	}
 }

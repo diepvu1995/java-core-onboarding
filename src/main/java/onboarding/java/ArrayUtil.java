@@ -510,12 +510,28 @@ public class ArrayUtil {
 	}
 
 	// TODO -, *
+	/**
+	 * count clumps
+	 * 
+	 * @param nums
+	 * @return
+	 */
 	public static int countClumps(int[] nums) {
 		int[] newArrays = copyArray(nums);
 		int count = 0;
-		for (int i = 0; i < newArrays.length - 1; i++) {
-			if (newArrays[i] == newArrays[i + 1]) {
-				count++;
+		for (int i = 0; i < newArrays.length - 2; i++) {
+			for (int j = 0;; j++) {
+				if (i + j + 1 >= newArrays.length) {
+					count = 1;
+					break;
+				}
+				if (newArrays[i + j] != newArrays[i + j + 1]) {
+					if (j >= 1) {
+						count++;
+					}
+					i = i + j + 1;
+					break;
+				}
 			}
 		}
 		return count;

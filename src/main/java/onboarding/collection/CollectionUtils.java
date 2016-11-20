@@ -363,5 +363,9 @@ public class CollectionUtils {
 		}
 		return map;
 	}
+	
+	public String zipText(String strings){
+		return strings;
+	}
 
 }

@@ -185,7 +185,8 @@ public class CollectionUtilsLambda {
 
 	@SuppressWarnings("unchecked")
 	public static List<Album> album(List<Album> albums) {
-		List<Album> newAlbum = albums.stream()
+		List<Album> newAlbum = albums
+				.stream()
 				.filter(a -> a.track.stream().filter(t -> t.rating >= 4)
 						.count() > 0).collect(Collectors.toList());
 		return newAlbum.stream().sorted((a1, a2) -> a1.name.compareTo(a2.name))
@@ -199,6 +200,11 @@ public class CollectionUtilsLambda {
 	public class Album {
 		public List<Track> track;
 		public String name;
+	}
+
+	public static int countClumps(List<Integer> nums) {
+		return 0;
+
 	}
 }
 

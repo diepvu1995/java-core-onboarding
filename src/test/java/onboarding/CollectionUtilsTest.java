@@ -1,13 +1,12 @@
 package onboarding;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 
+import onboarding.collection.CollectionUtils;
+
 import org.junit.Assert;
 import org.junit.Test;
-
-import onboarding.collection.CollectionUtils;
 
 public class CollectionUtilsTest {
 	CollectionUtils utils;
