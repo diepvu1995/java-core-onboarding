@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CollectionUtils {
 	/**
@@ -161,10 +163,10 @@ public class CollectionUtils {
 	 */
 	public static boolean find6(List<Integer> nums) {
 		List<Integer> findArray = new ArrayList<Integer>(nums);
-		//findArray.stream().filter(e -> e.intValue() == 6).findFirst().get();
+		// findArray.stream().filter(e -> e.intValue() == 6).findFirst().get();
 		// tim vi tri lan suat hien dau tien cua doi tuong 6.
 		int posOf6 = findArray.indexOf(new Integer(6));
-		return (posOf6 == 0 || posOf6 == findArray.size()-1) ? true : false;
+		return (posOf6 == 0 || posOf6 == findArray.size() - 1) ? true : false;
 	}
 
 	/**
@@ -336,6 +338,30 @@ public class CollectionUtils {
 			}
 		}
 		return (dem1 > dem4) ? true : false;
+	}
+
+	public Map<String, String> topping2(Map<String, String> map) {
+		if (map.containsValue("spinach")) {
+			map.put("spinach", "nuts");
+		}
+		if (map.containsKey("ice cream")) {
+			map.put("yogurt", map.get("ice cream"));
+		}
+		return map;
+	}
+
+	public Map<String, Integer> wordCount(String[] strings) {
+		Map<String, Integer> map = new HashMap();
+		for (int i = 0; i < strings.length; i++) {
+			String test = strings[i];
+			if (map.containsKey(test)) {
+				int count = map.get(test);
+				map.put(test, count + 1);
+			} else {
+				map.put(test, 1);
+			}
+		}
+		return map;
 	}
 
 }

@@ -261,5 +261,11 @@ public class App {
 		for (int i = 0; i < sum.length; i++) {
 			System.out.print(sum[i]);
 		}
+
+		System.out.println("");
+		int[] arrayClumps = { 1, 1, 5, 6, 6, 3, 3, 2, 2, 4, 5, 6, 8, 8 };
+		int count = arrayUtil.countClumps(arrayClumps);
+		System.out.print(count);
+
 	}
 }

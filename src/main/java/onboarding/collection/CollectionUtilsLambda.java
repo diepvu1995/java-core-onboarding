@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.junit.Assert;
 
@@ -81,6 +83,51 @@ public class CollectionUtilsLambda {
 	}
 
 	/**
+	 * tim vi tri cua gia tri nhap vao
+	 * 
+	 * @param array
+	 * @param findingValue
+	 * @return
+	 */
+	public static int findIndex(List<Integer> array, int findingValue) {
+		int[] indexes = IntStream.range(0, array.size())
+				.filter(index -> array.get(index).intValue() == findingValue)
+				.toArray();
+		return indexes[0];
+	}
+
+	/**
+	 * Them mot gia tri moi, vao vi tri moi trong mang.
+	 * 
+	 * @param array
+	 * @param newValue
+	 * @param newPosition
+	 * @return newArray , add newValue in newPosition
+	 */
+	public static List<Integer> addElement(List<Integer> array, int newValue,
+			int newPosition) {
+		List<Integer> addArray = new ArrayList<Integer>(array);
+		addArray.add(newPosition, newValue);
+		return addArray;
+	}
+
+	/**
+	 * Remove one element into one array by value
+	 * 
+	 * @param array
+	 * @param removedValue
+	 * @return
+	 */
+	public static List<Integer> removeByValue(List<Integer> array,
+			int removedValue) {
+		// collect(Collector.toList) tra ve mot list
+		List<Integer> removeArray = array.stream()
+				.filter(e -> e.intValue() != removedValue)
+				.collect(Collectors.toList());
+		return removeArray;
+	}
+
+	/**
 	 * Calculate the sum of input integers.
 	 * 
 	 * @param nums
@@ -97,11 +144,61 @@ public class CollectionUtilsLambda {
 	 * @return
 	 */
 	public static boolean find6(List<Integer> nums) {
-		List<Integer> findArray = new ArrayList<Integer>(nums);
-		// tim vi tri lan suat hien dau tien cua doi tuong 6.
-		int posOf6 = nums.stream().filter(element -> element.intValue() == 6)
-				.findFirst().get();
-		return (posOf6 == 0 || posOf6 == findArray.size() - 1) ? true : false;
+		return IntStream
+				.range(0, nums.size())
+				.filter(index -> (nums.get(index).intValue() == 6)
+						&& (index == 0 || index == nums.size() - 1)).count() > 0;
+	}
+
+	/**
+	 * check element 2 and 3 in nums[]
+	 * 
+	 * @param nums
+	 * @return true if no 2,3, false if have 2,3
+	 */
+	public static boolean no23(List<Integer> nums) {
+		return (IntStream
+				.range(0, nums.size())
+				.filter(index -> (nums.get(index).intValue() == 2 || nums.get(
+						index).intValue() == 3)).count() > 0) ? false : true;
+	}
+
+	/**
+	 * replace all element of a ArrayList ( compare first element with last
+	 * element)
+	 * 
+	 * @param nums
+	 * @return
+	 */
+	public static List<Integer> maxEnd(List<Integer> nums) {
+		List<Integer> maxArray = new ArrayList<Integer>(nums);
+		int value = (maxArray.get(0) >= maxArray.get(maxArray.size() - 1)) ? maxArray
+				.get(0) : maxArray.get(maxArray.size() - 1);
+		return maxArray.stream().map(v -> value).collect(Collectors.toList());
+	}
+
+	public static boolean more14(List<Integer> nums) {
+		int dem1 = (int) nums.stream().filter(v -> v.intValue() == 1).count();
+		int dem4 = (int) nums.stream().filter(v -> v.intValue() == 4).count();
+		return (dem1 > dem4) ? true : false;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static List<Album> album(List<Album> albums) {
+		List<Album> newAlbum = albums.stream()
+				.filter(a -> a.track.stream().filter(t -> t.rating >= 4)
+						.count() > 0).collect(Collectors.toList());
+		return newAlbum.stream().sorted((a1, a2) -> a1.name.compareTo(a2.name))
+				.collect(Collectors.toList());
+	}
+
+	public class Track {
+		public int rating;
+	}
+
+	public class Album {
+		public List<Track> track;
+		public String name;
 	}
 }
 
