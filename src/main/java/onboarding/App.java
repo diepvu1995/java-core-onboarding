@@ -10,40 +10,12 @@ import onboarding.java.StringUtil;
 public class App {
 	public static void main(String[] args) {
 		StringUtil stringUtil = new StringUtil();
-		System.out.println("====FINDSUBSTRING=====");
-		System.out.println(stringUtil.findSubString(
-				"Hello world ,Hello Reader", "Hello"));
-		System.out.println("");
-		System.out.println("====UPPER=====");
-		System.out.println(StringUtil.upper("this-is-Java"));
-		System.out.println("");
-		System.out.println("====LOWER=====");
-		System.out.println(StringUtil.lower("this-is-Java"));
-		System.out.println("");
-		System.out.println("====TRANSFORM=====");
-		System.out.println(StringUtil.transform("Hello world ,Hello Reader",
-				"UP"));
-		System.out.println("");
-		System.out.println("====FINDSUBSTRING WITH CASE-SENSITIVE======");
-		System.out.println(StringUtil.findSubString(
-				"Hello world ,hello Reader", "hello", false));
-		System.out.println("");
-		System.out.println("====REMOVECHATAT=====");
-		System.out.println(StringUtil.removeCharAt("this is java", 3));
-		System.out.println("");
-		System.out.println("====REMOVECHAR=====");
-		System.out.println(StringUtil.removeChar("Hello", 'e'));
-		System.out.println("");
-		System.out.println("====REVERSE=====");
-		System.out.println(StringUtil.reverse("this is java"));
-		System.out.println("");
-		System.out.println("====SPLIT====");
-		String[] split = StringUtil.split("this-is-Java", 's');
-		for (int i = 0; i < split.length; i++) {
-			System.out.println(split[i]);
-		}
-		System.out.println("");
-		System.out
+		testStringUtil(stringUtil);
+		testArrayUtil();
+	}
+
+    private static void testArrayUtil() {
+        System.out
 				.println("====================ARRAY Util======================");
 		int[] array = { 3, 4, 2, 1, 0, 9, 5, 2 };
 
@@ -266,6 +238,41 @@ public class App {
 		int[] arrayClumps = { 1, 1, 1, 1, 1 };
 		int count = arrayUtil.countClumps(arrayClumps);
 		System.out.print(count);
+    }
 
-	}
+    private static void testStringUtil(StringUtil stringUtil) {
+        System.out.println("====FINDSUBSTRING=====");
+		System.out.println(stringUtil.findSubString(
+				"Hello world ,Hello Reader", "Hello"));
+		System.out.println("");
+		System.out.println("====UPPER=====");
+		System.out.println(StringUtil.upper("this-is-Java"));
+		System.out.println("");
+		System.out.println("====LOWER=====");
+		System.out.println(StringUtil.lower("this-is-Java"));
+		System.out.println("");
+		System.out.println("====TRANSFORM=====");
+		System.out.println(StringUtil.transform("Hello world ,Hello Reader",
+				"UP"));
+		System.out.println("");
+		System.out.println("====FINDSUBSTRING WITH CASE-SENSITIVE======");
+		System.out.println(StringUtil.findSubString(
+				"Hello world ,hello Reader", "hello", false));
+		System.out.println("");
+		System.out.println("====REMOVECHATAT=====");
+		System.out.println(StringUtil.removeCharAt("this is java", 3));
+		System.out.println("");
+		System.out.println("====REMOVECHAR=====");
+		System.out.println(StringUtil.removeChar("Hello", 'e'));
+		System.out.println("");
+		System.out.println("====REVERSE=====");
+		System.out.println(StringUtil.reverse("this is java"));
+		System.out.println("");
+		System.out.println("====SPLIT====");
+		String[] split = StringUtil.split("this-is-Java", 's');
+		for (int i = 0; i < split.length; i++) {
+			System.out.println(split[i]);
+		}
+		System.out.println("");
+    }
 }
