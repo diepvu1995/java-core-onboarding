@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import org.junit.Assert;
-
 public class CollectionUtilsLambda {
 	/**
 	 * sap xep mang giam dan
@@ -34,11 +32,6 @@ public class CollectionUtilsLambda {
 		});
 		// 3rd way: lambda style
 		sortedArray3.stream().sorted((i1, i2) -> i2.intValue() - i1.intValue());
-
-		Assert.assertEquals(sortedArray1, sortedArray2);
-		Assert.assertEquals(sortedArray1, sortedArray3);
-		Assert.assertEquals(sortedArray2, sortedArray3);
-
 		return sortedArray1;
 	}
 

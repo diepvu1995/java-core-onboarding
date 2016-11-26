@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Assert;
-
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import onboarding.collection.CollectionUtilsLambda;
-import onboarding.collection.CollectionUtilsLambda.Album;
 import onboarding.java.ArrayUtil;
+
+import org.junit.Assert;
 
 /**
  * Unit test for simple App.
@@ -111,4 +110,20 @@ public class AppTest extends TestCase {
 		int result = ArrayUtil.countClumps(arrayClumps);
 		Assert.assertEquals(1, result);
 	}
+
+	public void testClumps_2() {
+		int[] arrayClumps = { 1, 2, 2, 3, 4, 4 };
+		int result = ArrayUtil.countClumps(arrayClumps);
+		Assert.assertEquals(2, result);
+	}
+
+	public void testClumps_3() {
+		int[] arrayClumps = { 1, 1, 2, 1, 1 };
+		int result = ArrayUtil.countClumps(arrayClumps);
+		Assert.assertEquals(2, result);
+	}
+
+	public void testTopping2() {
+	}
+
 }

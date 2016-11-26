@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -340,7 +342,7 @@ public class CollectionUtils {
 		return (dem1 > dem4) ? true : false;
 	}
 
-	public Map<String, String> topping2(Map<String, String> map) {
+	public static Map<String, String> topping2(Map<String, String> map) {
 		if (map.containsValue("spinach")) {
 			map.put("spinach", "nuts");
 		}
@@ -350,7 +352,7 @@ public class CollectionUtils {
 		return map;
 	}
 
-	public Map<String, Integer> wordCount(String[] strings) {
+	public static Map<String, Integer> wordCount(String[] strings) {
 		Map<String, Integer> map = new HashMap();
 		for (int i = 0; i < strings.length; i++) {
 			String test = strings[i];
@@ -363,8 +365,12 @@ public class CollectionUtils {
 		}
 		return map;
 	}
-	
-	public String zipText(String strings){
+
+	public static String zipText(String strings) {
+		return strings;
+	}
+
+	public static String unzipText(String strings) {
 		return strings;
 	}
 

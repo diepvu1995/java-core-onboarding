@@ -519,17 +519,13 @@ public class ArrayUtil {
 	public static int countClumps(int[] nums) {
 		int[] newArrays = copyArray(nums);
 		int count = 0;
-		for (int i = 0; i < newArrays.length - 2; i++) {
+		for (int i = 0; i <= newArrays.length - 2; i++) {
 			for (int j = 0;; j++) {
-				if (i + j + 1 >= newArrays.length) {
-					count = 1;
-					break;
-				}
-				if (newArrays[i + j] != newArrays[i + j + 1]) {
-					if (j >= 1) {
-						count++;
-					}
-					i = i + j + 1;
+				if ((newArrays[i + j] != newArrays[i + j + 1] && j >= 1)
+						|| (newArrays[i + j] == newArrays[i + j + 1])
+						&& (i + j + 2 >= newArrays.length)) {
+					count++;
+					i = i + j;
 					break;
 				}
 			}
