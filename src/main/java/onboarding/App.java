@@ -8,14 +8,13 @@ import org.springframework.stereotype.Component;
 import onboarding.java.ArrayUtil;
 import onboarding.java.IStringUtil;
 
-@Component
 public class App {
 
     @Autowired
     private IStringUtil stringUtil;
 
     public static void main(String[] args) {
-        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        ApplicationContext context = new AnnotationConfigApplicationContext(AppJavaBasedConfig.class);
         App app = context.getBean(App.class);
         app.testStringUtil();
         app.testArrayUtil();
