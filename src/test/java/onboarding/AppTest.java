@@ -184,4 +184,21 @@ public class AppTest extends TestCase {
 		Assert.assertEquals(4, map.values().toArray()[0]);
 		Assert.assertEquals("c", map.keySet().toArray()[0]);
 	}
+
+	public void testzipText_1() {
+		Assert.assertEquals("a2bcd2efda2",
+				CollectionUtils.zipText("aabcddefdaa"));
+	}
+
+	public void testzipText_2() {
+		Assert.assertEquals("a9", CollectionUtils.zipText("aaaaaaaaa"));
+	}
+
+	public void testzipText_3() {
+		Assert.assertEquals("a9b", CollectionUtils.zipText("aaaaaaaaab"));
+	}
+
+	public void testzipText_4() {
+		Assert.assertEquals("ba9b", CollectionUtils.zipText("baaaaaaaaab"));
+	}
 }
