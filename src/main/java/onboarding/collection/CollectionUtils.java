@@ -391,15 +391,18 @@ public class CollectionUtils {
 	public static String zipText(String s) {
 		String newString = "";
 		char[] a = s.toCharArray();
-		for (int i = 0; i < a.length - 2; i++) {
+		for (int i = 0; i < a.length - 1; i++) {
 			for (int j = 0;; j++) {
-				if (a[i] != a[i + j] && j == 0 && i + j + 1 < a.length) {
+				if (a[i + j] != a[i + j + 1] && j == 0 && i + j + 1 < a.length) {
 					newString += String.valueOf(a[i]);
 					i = i + j;
 					break;
-				} else if ((a[i] != a[i + j] && j >= 2)
-						|| (a[i] == a[i + j] && i + j + 1 >= a.length)) {
-					newString += String.valueOf(a[i]) + String.valueOf(j);
+				} else if ((a[i + j] != a[i + j + 1] && j >= 1)) {
+					newString += String.valueOf(a[i]) + String.valueOf(j + 1);
+					i = i + j;
+					break;
+				} else if ((a[i + j] == a[i + j + 1] && i + j + 1 >= a.length - 1)) {
+					newString += String.valueOf(a[i]) + String.valueOf(j + 2);
 					i = i + j;
 					break;
 				}
