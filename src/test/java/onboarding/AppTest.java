@@ -2,11 +2,15 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import onboarding.collection.CollectionUtils;
 import onboarding.collection.CollectionUtilsLambda;
 import onboarding.java.ArrayUtil;
 
@@ -123,7 +127,61 @@ public class AppTest extends TestCase {
 		Assert.assertEquals(2, result);
 	}
 
-	public void testTopping2() {
+	public void testTopping2_1() {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("ice cream", "cherry");
+		Map<String, String> map1 = CollectionUtils.topping2(map);
+		Assert.assertEquals("yogurt", map1.keySet().toArray()[0]);
 	}
 
+	public void testTopping2_2() {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("spinach", "dirt");
+		map.put("ice cream", "cherry");
+		Map<String, String> map1 = CollectionUtils.topping2(map);
+		Assert.assertEquals("yogurt", map1.keySet().toArray()[0]);
+		Assert.assertEquals("cherry", map1.values().toArray()[0]);
+		Assert.assertEquals("spinach", map1.keySet().toArray()[1]);
+		Assert.assertEquals("ice cream", map1.keySet().toArray()[2]);
+	}
+
+	public void testTopping2_3() {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("yogurt", "salt");
+		Map<String, String> map1 = CollectionUtils.topping2(map);
+		Assert.assertEquals("yogurt", map1.keySet().toArray()[0]);
+		Assert.assertEquals("salt", map1.values().toArray()[0]);
+	}
+
+	public void testWordCount_1() {
+		String[] wordCount = { "a", "b", "a", "c", "b" };
+		Map<String, Integer> map = CollectionUtils.wordCount(wordCount);
+		Assert.assertEquals(2, map.values().toArray()[0]);
+		Assert.assertEquals(2, map.values().toArray()[1]);
+		Assert.assertEquals(1, map.values().toArray()[2]);
+		Assert.assertEquals("a", map.keySet().toArray()[0]);
+		Assert.assertEquals("b", map.keySet().toArray()[1]);
+		Assert.assertEquals("c", map.keySet().toArray()[2]);
+		Entry<String, Integer> firstEntry = map.entrySet().iterator().next();
+		Assert.assertEquals("a", firstEntry.getKey());
+		Assert.assertEquals(2, firstEntry.getValue().intValue());
+	}
+
+	public void testWordCount_2() {
+		String[] wordCount = { "c", "b", "a" };
+		Map<String, Integer> map = CollectionUtils.wordCount(wordCount);
+		Assert.assertEquals(1, map.values().toArray()[0]);
+		Assert.assertEquals(1, map.values().toArray()[1]);
+		Assert.assertEquals(1, map.values().toArray()[2]);
+		Assert.assertEquals("a", map.keySet().toArray()[0]);
+		Assert.assertEquals("b", map.keySet().toArray()[1]);
+		Assert.assertEquals("c", map.keySet().toArray()[2]);
+	}
+
+	public void testWordCount_3() {
+		String[] wordCount = { "c", "c", "c", "c" };
+		Map<String, Integer> map = CollectionUtils.wordCount(wordCount);
+		Assert.assertEquals(4, map.values().toArray()[0]);
+		Assert.assertEquals("c", map.keySet().toArray()[0]);
+	}
 }

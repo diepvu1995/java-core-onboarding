@@ -9,6 +9,7 @@ import java.util.Hashtable;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.IntStream;
 
 public class CollectionUtils {
 	/**
@@ -342,6 +343,15 @@ public class CollectionUtils {
 		return (dem1 > dem4) ? true : false;
 	}
 
+	/**
+	 * Given a map of food keys and their topping values, modify and return the
+	 * map as follows: if the key "ice cream" has a value, set that as the value
+	 * for the key "yogurt" also. If the key "spinach" has a value, change that
+	 * value to "nuts"
+	 * 
+	 * @param map
+	 * @return
+	 */
 	public static Map<String, String> topping2(Map<String, String> map) {
 		if (map.containsValue("spinach")) {
 			map.put("spinach", "nuts");
@@ -352,6 +362,12 @@ public class CollectionUtils {
 		return map;
 	}
 
+	/**
+	 * word cout in a String[]
+	 * 
+	 * @param strings
+	 * @return
+	 */
 	public static Map<String, Integer> wordCount(String[] strings) {
 		Map<String, Integer> map = new HashMap();
 		for (int i = 0; i < strings.length; i++) {
@@ -366,10 +382,39 @@ public class CollectionUtils {
 		return map;
 	}
 
-	public static String zipText(String strings) {
-		return strings;
+	/**
+	 * cout occurence of a item in string java
+	 * 
+	 * @param strings
+	 * @return "aabcddefdaa"->"a2bcd2edda2"
+	 */
+	public static String zipText(String s) {
+		String newString = "";
+		char[] a = s.toCharArray();
+		for (int i = 0; i < a.length - 2; i++) {
+			for (int j = 0;; j++) {
+				if (a[i] != a[i + j] && j == 0 && i + j + 1 < a.length) {
+					newString += String.valueOf(a[i]);
+					i = i + j;
+					break;
+				} else if ((a[i] != a[i + j] && j >= 2)
+						|| (a[i] == a[i + j] && i + j + 1 >= a.length)) {
+					newString += String.valueOf(a[i]) + String.valueOf(j);
+					i = i + j;
+					break;
+				}
+			}
+		}
+
+		return newString;
 	}
 
+	/**
+	 * EX: convert "a2bcd2edda2"->"aabcddefdaa"
+	 * 
+	 * @param strings
+	 * @return
+	 */
 	public static String unzipText(String strings) {
 		return strings;
 	}
