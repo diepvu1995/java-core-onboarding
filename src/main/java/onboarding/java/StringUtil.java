@@ -1,106 +1,78 @@
 package onboarding.java;
 
-public class StringUtil {
-	/**
-	 * find the last postion of sub-string
-	 * 
-	 * @param parentStr
-	 * @param subStr
-	 * @return postion of string
-	 */
-	public int findSubString(String parentStr, String subStr) {
-		return parentStr.lastIndexOf(subStr);
-	}
+import org.springframework.stereotype.Component;
 
-	/**
-	 * Find postion with case-sensitive flag
-	 * 
-	 * @param parentStr
-	 * @param subStr
-	 * @param isSensitive
-	 * @return vi tri cua subStr trong parent
-	 */
-	public static int findSubString(String parentStr, String subStr,
-			boolean isSensitive) {
-		return isSensitive ? parentStr.lastIndexOf(subStr) : parentStr
-				.toLowerCase().lastIndexOf(subStr.toLowerCase());
-	}
+@Component
+public class StringUtil implements IStringUtil {
+    /* (non-Javadoc)
+     * @see onboarding.java.IStringUtil#findSubString(java.lang.String, java.lang.String)
+     */
+    @Override
+    public int findSubString(String parentStr, String subStr) {
+        return parentStr.lastIndexOf(subStr);
+    }
 
-	/**
-	 * remove a character from parent string.
-	 * 
-	 * @param parentStr
-	 * @param index
-	 *            }
-	 * @return a newString after remove oldString in index
-	 */
-	public static String removeCharAt(String parentStr, int index) {
-		// StringBuilder subStr = new StringBuilder(parentStr);
-		// return subStr.deleteCharAt(index).toString();
-		return new StringBuilder(parentStr).deleteCharAt(index).toString();
-	}
+    /* (non-Javadoc)
+     * @see onboarding.java.IStringUtil#findSubString(java.lang.String, java.lang.String, boolean)
+     */
+    @Override
+    public int findSubString(String parentStr, String subStr, boolean isSensitive) {
+        return isSensitive ? parentStr.lastIndexOf(subStr) : parentStr.toLowerCase().lastIndexOf(subStr.toLowerCase());
+    }
 
-	/**
-	 * Remove a character
-	 * 
-	 * @param parentStr
-	 * @param removeChar
-	 * @return a newString after remove oldString with character
-	 */
-	public static String removeChar(String parentStr, char removeChar) {
-		return parentStr.replaceAll(parentStr, String.valueOf(removeChar));
-	}
+    /* (non-Javadoc)
+     * @see onboarding.java.IStringUtil#removeCharAt(java.lang.String, int)
+     */
+    @Override
+    public String removeCharAt(String parentStr, int index) {
+        return new StringBuilder(parentStr).deleteCharAt(index).toString();
+    }
 
-	/**
-	 * Transform one string into upper case.
-	 * 
-	 * @param originalStr
-	 * @return a string upper
-	 */
-	public static String upper(String originalStr) {
-		return originalStr.toUpperCase();
-	}
+    /* (non-Javadoc)
+     * @see onboarding.java.IStringUtil#removeChar(java.lang.String, char)
+     */
+    @Override
+    public String removeChar(String parentStr, char removeChar) {
+        return parentStr.replaceAll(parentStr, String.valueOf(removeChar));
+    }
 
-	/**
-	 * Transform one string into Lower case
-	 * 
-	 * @param originalStr
-	 * @return a string Lower
-	 */
-	public static String lower(String originalStr) {
-		return originalStr.toLowerCase();
-	}
+    /* (non-Javadoc)
+     * @see onboarding.java.IStringUtil#upper(java.lang.String)
+     */
+    @Override
+    public String upper(String originalStr) {
+        return originalStr.toUpperCase();
+    }
 
-	/**
-	 * Transform one string into upper case or lower case
-	 * 
-	 * @param originalStr
-	 * @param targetCase
-	 * @return a string transform upper->Lower if "LO", lower->upper if "UP
-	 */
-	public static String transform(String originalStr, String targetCase) {
-		return targetCase.equals("UP") ? originalStr.toUpperCase()
-				: originalStr.toLowerCase();
-	}
+    /* (non-Javadoc)
+     * @see onboarding.java.IStringUtil#lower(java.lang.String)
+     */
+    @Override
+    public String lower(String originalStr) {
+        return originalStr.toLowerCase();
+    }
 
-	/**
-	 * Reverse a String
-	 * 
-	 * @param originalStr
-	 * @return a String is reversed
-	 */
-	public static String reverse(String originalStr) {
-		return (new StringBuffer(originalStr)).reverse().toString();
-	}
+    /* (non-Javadoc)
+     * @see onboarding.java.IStringUtil#transform(java.lang.String, java.lang.String)
+     */
+    @Override
+    public String transform(String originalStr, String targetCase) {
+        return targetCase.equals("UP") ? originalStr.toUpperCase() : originalStr.toLowerCase();
+    }
 
-	/**
-	 * Split the parent string into sub-string by delimeter
-	 * 
-	 * @param originalStr
-	 * @param delimeter
-	 * @return a String[] after split
-	 */
-	public static String[] split(String originalStr, char delimeter) {
-		return originalStr.split(String.valueOf(delimeter));
-	}
+    /* (non-Javadoc)
+     * @see onboarding.java.IStringUtil#reverse(java.lang.String)
+     */
+    @Override
+    public String reverse(String originalStr) {
+        return (new StringBuffer(originalStr)).reverse().toString();
+    }
+
+    /* (non-Javadoc)
+     * @see onboarding.java.IStringUtil#split(java.lang.String, char)
+     */
+    @Override
+    public String[] split(String originalStr, char delimeter) {
+        return originalStr.split(String.valueOf(delimeter));
+    }
 }
