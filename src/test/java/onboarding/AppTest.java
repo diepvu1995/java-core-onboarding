@@ -201,4 +201,9 @@ public class AppTest extends TestCase {
 	public void testzipText_4() {
 		Assert.assertEquals("ba9b", CollectionUtils.zipText("baaaaaaaaab"));
 	}
+
+	public void testzipText_5() {
+		Assert.assertEquals("b2abc2w2a8be3g",
+				CollectionUtils.zipText("bbabccwwaaaaaaaabeeeg"));
+	}
 }

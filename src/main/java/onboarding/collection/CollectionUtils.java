@@ -387,6 +387,7 @@ public class CollectionUtils {
 	 */
 	public static String zipText(String s) {
 		String newString = "";
+		// convert 1 chuoi ve mot mang ki tu
 		char[] a = s.toCharArray();
 		for (int i = 0; i < a.length - 1; i++) {
 			for (int j = 0;; j++) {
@@ -394,9 +395,12 @@ public class CollectionUtils {
 					newString += String.valueOf(a[i]);
 					i = i + j;
 					break;
-				} else if ((a[i + j] != a[i + j + 1] && j >= 1)) {
+				} else if ((a[i + j] != a[i + j + 1] && i + j + 1 < a.length)) {
 					newString += String.valueOf(a[i]) + String.valueOf(j + 1);
 					i = i + j;
+					if (i + 2 == a.length) {
+						newString += String.valueOf(a[i + 1]);
+					}
 					break;
 				} else if ((a[i + j] == a[i + j + 1] && i + j + 1 >= a.length - 1)) {
 					newString += String.valueOf(a[i]) + String.valueOf(j + 2);
@@ -417,6 +421,18 @@ public class CollectionUtils {
 	 */
 	public static String unzipText(String strings) {
 		return strings;
+	}
+
+	/**
+	 * hello everyone => h: 1 e: 4 l: 2 o: 2 v: 1 r: 1 y: 1 n: 1 hllo vryon
+	 * 
+	 * @param strings
+	 * @return
+	 */
+	public static String removeDuplicate(String strings) {
+		char[] c = strings.toCharArray();
+		return strings;
+
 	}
 
 }
