@@ -206,4 +206,25 @@ public class AppTest extends TestCase {
 		Assert.assertEquals("b2abc2w2a8be3g",
 				CollectionUtils.zipText("bbabccwwaaaaaaaabeeeg"));
 	}
+
+	public void testNumber() {
+		Assert.assertTrue(CollectionUtils.isNumberic('2'));
+	}
+
+	public void testString() {
+		Assert.assertEquals("aaa", CollectionUtils.returnString('a', 3));
+	}
+
+	public void testunZipText_1() {
+		Assert.assertEquals("aabb", CollectionUtils.unzipText("a2b2"));
+	}
+
+	public void testunZipText_2() {
+		Assert.assertEquals("aaaabbc", CollectionUtils.unzipText("a4b2c"));
+	}
+
+	public void testunZipText_3() {
+		Assert.assertEquals("abbbbbcccbdddd",
+				CollectionUtils.unzipText("a1b5c3b1d4"));
+	}
 }

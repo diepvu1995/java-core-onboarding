@@ -391,15 +391,14 @@ public class CollectionUtils {
 		char[] a = s.toCharArray();
 		for (int i = 0; i < a.length - 1; i++) {
 			for (int j = 0;; j++) {
-				if (a[i + j] != a[i + j + 1] && j == 0 && i + j + 1 < a.length) {
+				if ((a[i + j] != a[i + j + 1] && i + j + 1 < a.length)) {
 					newString += String.valueOf(a[i]);
 					i = i + j;
-					break;
-				} else if ((a[i + j] != a[i + j + 1] && i + j + 1 < a.length)) {
-					newString += String.valueOf(a[i]) + String.valueOf(j + 1);
-					i = i + j;
-					if (i + 2 == a.length) {
-						newString += String.valueOf(a[i + 1]);
+					if (j != 0) {
+						newString += String.valueOf(j + 1);
+						if (i + 2 == a.length) {
+							newString += String.valueOf(a[i + 1]);
+						}
 					}
 					break;
 				} else if ((a[i + j] == a[i + j + 1] && i + j + 1 >= a.length - 1)) {
@@ -419,8 +418,42 @@ public class CollectionUtils {
 	 * @param strings
 	 * @return
 	 */
+	public static boolean isNumberic(char c) {
+		if (!Character.isDigit(c)) {
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * 
+	 * @param c
+	 * @param num
+	 * @return
+	 */
+	public static String returnString(char c, int num) {
+		String s = "";
+		for (int i = 0; i < num; i++) {
+			s += c;
+		}
+		return s;
+	}
+
 	public static String unzipText(String strings) {
-		return strings;
+		String result = "";
+		char[] s = strings.toCharArray();
+		for (int i = 0; i <= s.length - 1; i++) {
+			if (isNumberic(s[i])) {
+				result += returnString(s[i - 1],
+						Integer.valueOf(String.valueOf(s[i])));
+			} else {
+				if (i == s.length - 1) {
+					result += s[i];
+				}
+				continue;
+			}
+		}
+		return result;
 	}
 
 	/**
