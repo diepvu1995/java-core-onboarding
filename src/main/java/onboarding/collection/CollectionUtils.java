@@ -7,6 +7,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.IntStream;
 
 public class CollectionUtils {
 	/**
@@ -338,134 +339,6 @@ public class CollectionUtils {
 			}
 		}
 		return (dem1 > dem4) ? true : false;
-	}
-
-	/**
-	 * Given a map of food keys and their topping values, modify and return the
-	 * map as follows: if the key "ice cream" has a value, set that as the value
-	 * for the key "yogurt" also. If the key "spinach" has a value, change that
-	 * value to "nuts"
-	 * 
-	 * @param map
-	 * @return
-	 */
-	public static Map<String, String> topping2(Map<String, String> map) {
-		if (map.containsValue("spinach")) {
-			map.put("spinach", "nuts");
-		}
-		if (map.containsKey("ice cream")) {
-			map.put("yogurt", map.get("ice cream"));
-		}
-		return map;
-	}
-
-	/**
-	 * word cout in a String[]
-	 * 
-	 * @param strings
-	 * @return
-	 */
-	public static Map<String, Integer> wordCount(String[] strings) {
-		Map<String, Integer> map = new HashMap();
-		for (int i = 0; i < strings.length; i++) {
-			String test = strings[i];
-			if (map.containsKey(test)) {
-				int count = map.get(test);
-				map.put(test, count + 1);
-			} else {
-				map.put(test, 1);
-			}
-		}
-		return map;
-	}
-
-	/**
-	 * cout occurence of a item in string java
-	 * 
-	 * @param strings
-	 * @return "aabcddefdaa"->"a2bcd2edda2"
-	 */
-	public static String zipText(String s) {
-		String newString = "";
-		// convert 1 chuoi ve mot mang ki tu
-		char[] a = s.toCharArray();
-		for (int i = 0; i < a.length - 1; i++) {
-			for (int j = 0;; j++) {
-				if ((a[i + j] != a[i + j + 1] && i + j + 1 < a.length)) {
-					newString += String.valueOf(a[i]);
-					i = i + j;
-					if (j != 0) {
-						newString += String.valueOf(j + 1);
-						if (i + 2 == a.length) {
-							newString += String.valueOf(a[i + 1]);
-						}
-					}
-					break;
-				} else if ((a[i + j] == a[i + j + 1] && i + j + 1 >= a.length - 1)) {
-					newString += String.valueOf(a[i]) + String.valueOf(j + 2);
-					i = i + j;
-					break;
-				}
-			}
-		}
-
-		return newString;
-	}
-
-	/**
-	 * EX: convert "a2bcd2edda2"->"aabcddefdaa"
-	 * 
-	 * @param strings
-	 * @return
-	 */
-	public static boolean isNumberic(char c) {
-		if (!Character.isDigit(c)) {
-			return false;
-		}
-		return true;
-	}
-
-	/**
-	 * 
-	 * @param c
-	 * @param num
-	 * @return
-	 */
-	public static String returnString(char c, int num) {
-		String s = "";
-		for (int i = 0; i < num; i++) {
-			s += c;
-		}
-		return s;
-	}
-
-	public static String unzipText(String strings) {
-		String result = "";
-		char[] s = strings.toCharArray();
-		for (int i = 0; i <= s.length - 1; i++) {
-			if (isNumberic(s[i])) {
-				result += returnString(s[i - 1],
-						Integer.valueOf(String.valueOf(s[i])));
-			} else {
-				if (i == s.length - 1) {
-					result += s[i];
-				}
-				continue;
-			}
-		}
-		return result;
-	}
-
-	/**
-	 * hello everyone => h: 1 e: 4 l: 2 o: 2 v: 1 r: 1 y: 1 n: 1 hllo vryon
-	 * 
-	 * @param strings
-	 * @return
-	 */
-	public static String removeDuplicate(String strings) {
-		char[] c = strings.toCharArray();
-		return strings;
-
 	}
 
 }

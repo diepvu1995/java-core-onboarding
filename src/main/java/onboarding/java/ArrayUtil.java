@@ -1,5 +1,10 @@
 package onboarding.java;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.IntStream;
+
 public class ArrayUtil {
 	/**
 	 * sap xep mang giam dan
@@ -475,8 +480,8 @@ public class ArrayUtil {
 		for (int i = a.length - 1; i >= 0; i--) {
 			sum = a[i] + b[i] + temp;
 			if (sum > 10) {
-				c[i] = sum % 10;
-				temp = sum / 10;
+				c[i] = sum % 10;// lay phan nguyen
+				temp = sum / 10;// lay phan du
 			} else {
 				c[i] = sum;
 			}
@@ -531,5 +536,85 @@ public class ArrayUtil {
 			}
 		}
 		return count;
+	}
+
+	/**
+	 * chuyen tu he co so 10 ve he co so 2
+	 * 
+	 * @param n
+	 * @return
+	 */
+	public static List<Integer> convertTentoTwo(int n) {
+		List<Integer> b = new ArrayList<Integer>();
+		int phanNguyen = n;
+		int phanDu = 0;
+		for (int i = 0;; i++) {
+			phanDu = phanNguyen % 2;
+			phanNguyen = phanNguyen / 2;
+			b.add(phanDu);
+			if (phanNguyen == 0) {
+				break;
+			}
+		}
+		Collections.reverse(b);
+		return b;
+	}
+
+	public static int majorIndex(String number) {
+		int n = Integer.parseInt(number);
+		if (n == 0) {
+			return 0;
+		}
+		List<Integer> validIndexes = new ArrayList<Integer>();
+		List<Integer> b = convertTentoTwo(n);
+		
+		IntStream.range(1, b.size()).map(i -> b.size() - i)
+				.forEach(index -> {
+					if (b.get(index) == 1 && b.get(index - 1) == 0) {
+						validIndexes.add(index);
+					}
+				});
+		
+		return validIndexes.stream().mapToInt(element -> element).sum();
+	}
+
+	public static boolean Square_Check(int[] points) {
+		int x1 = points[0];
+		int y1 = points[1];
+		int x2 = points[2];
+		int y2 = points[3];
+		int x3 = points[4];
+		int y3 = points[5];
+		int x4 = points[6];
+		int y4 = points[7];
+		double dist1 = (double) Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1)
+				* (y2 - y1));
+		double dist2 = (double) Math.sqrt((x3 - x2) * (x3 - x2) + (y3 - y2)
+				* (y3 - y2));
+		double dist3 = (double) Math.sqrt((x4 - x3) * (x4 - x3) + (y4 - y3)
+				* (y4 - y3));
+		double dist4 = (double) Math.sqrt((x4 - x1) * (x4 - x1) + (y4 - y1)
+				* (y4 - y1));
+		if (dist1 == dist2 && dist2 == dist3 && dist3 == dist4) {
+			return true;
+		}
+		return false;
+	}
+
+	public static int toms_wagons(int month, int day, int n) {
+		int result = 0;
+		int daysInMonth;
+		if (month == 4 || month == 6 || month == 9 || month == 11) {
+			daysInMonth = 30;
+		} else if (month == 2) {
+			daysInMonth = 28;
+		} else {
+			daysInMonth = 31;
+		}
+		if ((month >= 1 && month <= 12) && (day >= 1 && day <= daysInMonth)
+				&& (n >= 0 && n <= 365)) {
+			result = month * day * n;
+		}
+		return result;
 	}
 }

@@ -10,9 +10,10 @@ import java.util.Map.Entry;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import onboarding.collection.CollectionUtils;
 import onboarding.collection.CollectionUtilsLambda;
 import onboarding.java.ArrayUtil;
+import onboarding.java.IStringUtil;
+import onboarding.java.StringUtil;
 
 import org.junit.Assert;
 
@@ -20,6 +21,8 @@ import org.junit.Assert;
  * Unit test for simple App.
  */
 public class AppTest extends TestCase {
+	private IStringUtil stringUtil = new StringUtil();
+
 	/**
 	 * Create the test case
 	 *
@@ -127,10 +130,30 @@ public class AppTest extends TestCase {
 		Assert.assertEquals(2, result);
 	}
 
+	public void testConvertTentoTwo_1() {
+		List<Integer> result = ArrayUtil.convertTentoTwo(5);
+		Assert.assertEquals(1, result.get(0).intValue());
+		Assert.assertEquals(0, result.get(1).intValue());
+		Assert.assertEquals(1, result.get(2).intValue());
+		Assert.assertEquals(3, result.size());
+	}
+
+	public void testMajorIndex() {
+		Assert.assertEquals(7, ArrayUtil.majorIndex("83"));
+	}
+
+	public void testMajorIndex_1() {
+		Assert.assertEquals(12, ArrayUtil.majorIndex("85"));
+	}
+
+	public void testMajorIndex_2() {
+		Assert.assertEquals(0, ArrayUtil.majorIndex("0"));
+	}
+
 	public void testTopping2_1() {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("ice cream", "cherry");
-		Map<String, String> map1 = CollectionUtils.topping2(map);
+		Map<String, String> map1 = stringUtil.topping2(map);
 		Assert.assertEquals("yogurt", map1.keySet().toArray()[0]);
 	}
 
@@ -138,7 +161,7 @@ public class AppTest extends TestCase {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("spinach", "dirt");
 		map.put("ice cream", "cherry");
-		Map<String, String> map1 = CollectionUtils.topping2(map);
+		Map<String, String> map1 = stringUtil.topping2(map);
 		Assert.assertEquals("yogurt", map1.keySet().toArray()[0]);
 		Assert.assertEquals("cherry", map1.values().toArray()[0]);
 		Assert.assertEquals("spinach", map1.keySet().toArray()[1]);
@@ -148,14 +171,14 @@ public class AppTest extends TestCase {
 	public void testTopping2_3() {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("yogurt", "salt");
-		Map<String, String> map1 = CollectionUtils.topping2(map);
+		Map<String, String> map1 = stringUtil.topping2(map);
 		Assert.assertEquals("yogurt", map1.keySet().toArray()[0]);
 		Assert.assertEquals("salt", map1.values().toArray()[0]);
 	}
 
 	public void testWordCount_1() {
 		String[] wordCount = { "a", "b", "a", "c", "b" };
-		Map<String, Integer> map = CollectionUtils.wordCount(wordCount);
+		Map<String, Integer> map = stringUtil.wordCount(wordCount);
 		Assert.assertEquals(2, map.values().toArray()[0]);
 		Assert.assertEquals(2, map.values().toArray()[1]);
 		Assert.assertEquals(1, map.values().toArray()[2]);
@@ -169,7 +192,7 @@ public class AppTest extends TestCase {
 
 	public void testWordCount_2() {
 		String[] wordCount = { "c", "b", "a" };
-		Map<String, Integer> map = CollectionUtils.wordCount(wordCount);
+		Map<String, Integer> map = stringUtil.wordCount(wordCount);
 		Assert.assertEquals(1, map.values().toArray()[0]);
 		Assert.assertEquals(1, map.values().toArray()[1]);
 		Assert.assertEquals(1, map.values().toArray()[2]);
@@ -180,51 +203,144 @@ public class AppTest extends TestCase {
 
 	public void testWordCount_3() {
 		String[] wordCount = { "c", "c", "c", "c" };
-		Map<String, Integer> map = CollectionUtils.wordCount(wordCount);
+		Map<String, Integer> map = stringUtil.wordCount(wordCount);
 		Assert.assertEquals(4, map.values().toArray()[0]);
 		Assert.assertEquals("c", map.keySet().toArray()[0]);
 	}
 
 	public void testzipText_1() {
-		Assert.assertEquals("a2bcd2efda2",
-				CollectionUtils.zipText("aabcddefdaa"));
+		Assert.assertEquals("a2b1c1d2e1f1d1a2",
+				stringUtil.zipText("aabcddefdaa"));
 	}
 
 	public void testzipText_2() {
-		Assert.assertEquals("a9", CollectionUtils.zipText("aaaaaaaaa"));
+		Assert.assertEquals("a9", stringUtil.zipText("aaaaaaaaa"));
 	}
 
 	public void testzipText_3() {
-		Assert.assertEquals("a9b", CollectionUtils.zipText("aaaaaaaaab"));
+		Assert.assertEquals("a9b1", stringUtil.zipText("aaaaaaaaab"));
 	}
 
 	public void testzipText_4() {
-		Assert.assertEquals("ba9b", CollectionUtils.zipText("baaaaaaaaab"));
+		Assert.assertEquals("b1a9b1", stringUtil.zipText("baaaaaaaaab"));
 	}
 
 	public void testzipText_5() {
-		Assert.assertEquals("b2abc2w2a8be3g",
-				CollectionUtils.zipText("bbabccwwaaaaaaaabeeeg"));
+		Assert.assertEquals("b2a1b1c2w2a8b1e3g1",
+				stringUtil.zipText("bbabccwwaaaaaaaabeeeg"));
 	}
 
 	public void testNumber() {
-		Assert.assertTrue(CollectionUtils.isNumberic('2'));
+		Assert.assertTrue(stringUtil.isNumberic('2'));
 	}
 
 	public void testString() {
-		Assert.assertEquals("aaa", CollectionUtils.returnString('a', 3));
+		Assert.assertEquals("aaa", stringUtil.returnString('a', 3));
 	}
 
-	public void testunZipText_1() {
-		Assert.assertEquals("aabb", CollectionUtils.unzipText("a2b2"));
+	public void testUnZipText_1() {
+		Assert.assertEquals("aabb", stringUtil.unzipText("a2b2"));
 	}
 
-	public void testunZipText_2() {
-		Assert.assertEquals("aaaabbc", CollectionUtils.unzipText("a4b2c"));
+	public void testUnZipText_2() {
+		Assert.assertEquals("aaaabbc", stringUtil.unzipText("a4b2c"));
 	}
 
-	public void testunZipText_3() {
+	public void testUnZipText_3() {
 		Assert.assertEquals("abbbbbcccbdddd",
-				CollectionUtils.unzipText("a1b5c3b1d4"));
+				stringUtil.unzipText("a1b5c3b1d4"));
+	}
+
+	public void testRemoveDupicate_1() {
+		Assert.assertEquals("hllovryon",
+				stringUtil.removeDuplicate("hello everyone"));
+	}
+
+	public void testMaxBlock_1() {
+		Assert.assertEquals(2, stringUtil.maxBlock("hoopla"));
+	}
+
+	public void testMaxBlock_2() {
+		Assert.assertEquals(5, stringUtil.maxBlock("abbCCCddBBBxxxxx"));
+	}
+
+	public void testMaxBlock_3() {
+		Assert.assertEquals(0, stringUtil.maxBlock(""));
+	}
+
+	public void testSumDigit_1() {
+		Assert.assertEquals(6, stringUtil.sumDigits("aa1bc2d3"));
+	}
+
+	public void testMirrorEnds_1() {
+		Assert.assertEquals("ab", stringUtil.mirrorEnds("abXYZba"));
+	}
+
+	public void testMirrorEnds_2() {
+		Assert.assertEquals("a", stringUtil.mirrorEnds("abca"));
+	}
+
+	public void testMirrorEnds_3() {
+		Assert.assertEquals("aba", stringUtil.mirrorEnds("aba"));
+	}
+
+	public void testMirrorEnds_4() {
+		Assert.assertEquals("a", stringUtil.mirrorEnds("abca"));
+	}
+
+	public void testLongWord_1() {
+		Assert.assertEquals("love", stringUtil.longestWord("I love dogs"));
+	}
+
+	public void testLongWord_2() {
+		Assert.assertEquals("", stringUtil.longestWord(""));
+	}
+
+	public void testLongWord_3() {
+		Assert.assertEquals(" ", stringUtil.longestWord(" "));
+	}
+
+	public void testLongWord_4() {
+		Assert.assertEquals("time", stringUtil.longestWord("fun&!! time"));
+	}
+
+	public void testPresentString_1() {
+		String[] s = { "1", "2", "3", "4", "Code", "6", "Fight", "8", "9",
+				"Code", "11", "12", "13", "Fight", "Code" };
+		Assert.assertEquals(s, stringUtil.CodeFight(15));
+	}
+
+	public void testPresentString_2() {
+		String[] s = { "1" };
+		Assert.assertEquals(s, stringUtil.CodeFight(1));
+	}
+
+	public void testPresentString_35() {
+		String[] s = { "1", "2", "3", "4", "Code", "6", "Fight", "8", "9",
+				"Code", "11", "12", "13", "Fight", "Code", "16", "17", "18",
+				"19", "Code", "Fight", "22", "23", "24", "Code", "26", "27",
+				"Fight", "29", "Code", "31", "32", "33", "34", "CodeFight" };
+		Assert.assertEquals(s, stringUtil.CodeFight(35));
+	}
+
+	public void testIqAddress() {
+		Assert.assertEquals("12.04.08.05.5", stringUtil.iqAddress(16));
+	}
+
+	public void testIqAddress_1() {
+		Assert.assertEquals("12.03.06.00.50.0", stringUtil.iqAddress(21));
+	}
+
+	public void testIqAddress_2() {
+		Assert.assertEquals("1", stringUtil.iqAddress(1));
+	}
+
+	public void testSquareCheck() {
+		int[] point = { 3, 4, 4, 3, 5, 4, 4, 5 };
+		Assert.assertEquals(true, ArrayUtil.Square_Check(point));
+	}
+
+	public void testaaaaaa() {
+		Assert.assertEquals(550, ArrayUtil.toms_wagons(5, 10, 11));
 	}
 }

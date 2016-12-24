@@ -150,6 +150,7 @@ public class CollectionUtilsLambda {
 	 * @return true if no 2,3, false if have 2,3
 	 */
 	public static boolean no23(List<Integer> nums) {
+		//duyet vong lap lay index
 		return (IntStream
 				.range(0, nums.size())
 				.filter(index -> (nums.get(index).intValue() == 2 || nums.get(
