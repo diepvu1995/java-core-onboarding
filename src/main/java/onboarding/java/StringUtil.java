@@ -1,8 +1,5 @@
 package onboarding.java;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class StringUtil implements IStringUtil {
     /* (non-Javadoc)
      * @see onboarding.java.IStringUtil#findSubString(java.lang.String, java.lang.String)
