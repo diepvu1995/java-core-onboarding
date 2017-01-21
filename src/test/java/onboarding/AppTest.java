@@ -150,6 +150,48 @@ public class AppTest extends TestCase {
 		Assert.assertEquals(0, ArrayUtil.majorIndex("0"));
 	}
 
+	public void testDigitSumRange() {
+		Assert.assertEquals(46, ArrayUtil.digitSumRange(1, 10));
+	}
+
+	public void testKsubSequences() {
+		int[] nums = { 9, 1, 3, 5, 2, 3 };
+		Assert.assertEquals(4, ArrayUtil.kSubSequences(10, nums));
+	}
+
+	public void testRemainFib() {
+		Assert.assertEquals("4", ArrayUtil.remainFib("1"));
+		Assert.assertEquals("6", ArrayUtil.remainFib("2"));
+		Assert.assertEquals("7", ArrayUtil.remainFib("3"));
+
+	}
+
+	public void testFibo() {
+		Assert.assertEquals(1, ArrayUtil.fibo(1));
+		// Assert.assertEquals(1, ArrayUtil.fibo(2));
+		// Assert.assertEquals(3, ArrayUtil.fibo(3));
+		// Assert.assertEquals(8, ArrayUtil.fibo(5));
+
+	}
+
+	public void testPrimeDistance() {
+		Assert.assertEquals(2, ArrayUtil.primeDistance("0"));
+		Assert.assertEquals(1, ArrayUtil.primeDistance("1"));
+		Assert.assertEquals(0, ArrayUtil.primeDistance("2"));
+		Assert.assertEquals(1, ArrayUtil.primeDistance("8"));
+		Assert.assertEquals(1, ArrayUtil.primeDistance("500"));
+
+	}
+
+	public void testRemoveDup() {
+		int[] a = { 1, 2, 3, 3, 3, 3 };
+		int[] result = ArrayUtil.deDup(a);
+		Assert.assertEquals(1, result[0]);
+		Assert.assertEquals(2, result[1]);
+		Assert.assertEquals(3, result[2]);
+
+	}
+
 	public void testTopping2_1() {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("ice cream", "cherry");

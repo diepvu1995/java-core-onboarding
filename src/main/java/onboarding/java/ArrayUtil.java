@@ -2,7 +2,10 @@ package onboarding.java;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.IntStream;
 
 public class ArrayUtil {
@@ -567,14 +570,13 @@ public class ArrayUtil {
 		}
 		List<Integer> validIndexes = new ArrayList<Integer>();
 		List<Integer> b = convertTentoTwo(n);
-		
-		IntStream.range(1, b.size()).map(i -> b.size() - i)
-				.forEach(index -> {
-					if (b.get(index) == 1 && b.get(index - 1) == 0) {
-						validIndexes.add(index);
-					}
-				});
-		
+
+		IntStream.range(1, b.size()).map(i -> b.size() - i).forEach(index -> {
+			if (b.get(index) == 1 && b.get(index - 1) == 0) {
+				validIndexes.add(index);
+			}
+		});
+
 		return validIndexes.stream().mapToInt(element -> element).sum();
 	}
 
@@ -616,5 +618,189 @@ public class ArrayUtil {
 			result = month * day * n;
 		}
 		return result;
+	}
+
+	/**
+	 * Digit Sum Range [a, b]
+	 * 
+	 * @param a
+	 * @param b
+	 * @return
+	 */
+	public static int digitSumRange(int a, int b) {
+		int result = 0;
+		for (int i = a; i <= b; i++) {
+			result += digitSumIndex(i);
+		}
+		return result;
+	}
+
+	private static int digitSumIndex(int n) {
+		int result = 0;
+		while (n >= 10) {
+			result += n % 10;
+			n = n / 10;
+		}
+		return (result += n);
+	}
+
+	/**
+	 * kSub
+	 * 
+	 * @param k
+	 * @param nums
+	 * @return
+	 */
+	public static int kSubSequences(int k, int[] nums) {
+		int count = 0;
+		for (int i = 0; i < nums.length; i++) {
+			int sum = 0;
+			for (int j = i; j < nums.length; j++) {
+				sum = sum + nums[j];
+				if (sum % k == 0) {
+					count++;
+				}
+			}
+		}
+		return count;
+	}
+
+	/**
+	 * code fights Tournament
+	 * 
+	 * @param p
+	 * @param s
+	 * @return
+	 */
+	public static int[] codeFightsTournament(int position, int score) {
+		int[] a = new int[2];
+		a[0] = (int) (4000 * Math.floor(Math.pow(0.5, position)));
+		a[1] = (position == 1) ? 2 * score : score;
+		return a;
+	}
+
+	public static String remainFib(String number) {
+		int num = Integer.parseInt(number);
+		int n = 0;
+		int k = 3;
+		while (n != num) {
+			if (!isFibonacci(k++)) {
+				n++;
+			}
+		}
+		return String.valueOf(k - 1);
+	}
+
+	private static boolean isFibonacci(int n) {
+		int fiboValue = 0;
+		int i = 1;
+		while (fiboValue < n) {
+			fiboValue = fibo(i);
+			i++;
+		}
+		return fiboValue == n;
+	}
+
+	// tinh so fibo o vi tri tu nhien n.
+	public static int fibo(int n) {
+		if (n == 1 || n == 0) {
+			return 1;
+		}
+		if (n == 2) {
+			return 2;
+		}
+		if (n == 3) {
+			return 3;
+		}
+
+		return fibo(n - 1) + fibo(n - 2);
+	}
+
+	public static int primeDistance(String number) {
+		Integer n = Integer.parseInt(number);
+		if (n == 0) {
+			return 2;
+		} else if (n == 1) {
+			return 1;
+		} else if (isPrime(n) || n == 2) {
+			return 0;
+		}
+		int i = 0;
+		while (true) {
+			i++;
+			if (isPrime(n - i) || isPrime(n + i)) {
+				return i;
+			}
+		}
+	}
+
+	private static boolean isPrime(int n) {
+		for (int i = 2; i <= Math.sqrt(n); i++) {
+			if (n % i == 0) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	// Last Digit Factorial
+	private static int giaiThua(int n) {
+		int giaiThua = 1;
+		for (int i = 1; i <= n; i++) {
+			giaiThua = giaiThua * i;
+		}
+		return giaiThua;
+	}
+
+	public static String removeZero(String input) {
+		String newInput = input;
+		for (int i = input.length() - 1; i >= 0; i--) {
+			if (input.charAt(i) == 0) {
+				newInput = new StringBuilder(input).deleteCharAt(i).toString();
+			} else {
+				break;
+			}
+		}
+		return newInput;
+	}
+
+	public static int lastDigitsFactorial(String n, int k) {
+		String s = removeZero(String.valueOf(giaiThua(Integer.parseInt(n))));
+		String kElements = s.substring(s.length() - k - 1);
+		String replaceElement = kElements.replaceAll("0", "");
+		Integer result = Integer.parseInt(replaceElement);
+		return result;
+	}
+
+	public static int[] deDup(int[] a) {
+		Set<Integer> array = new HashSet<Integer>();
+		for (int i = 0; i < a.length - 1; i++) {
+			array.add(a[i]);
+		}
+		int[] result = new int[array.size()];
+		// use iterator : add array->result
+		Iterator re = array.iterator();
+		int i = 0;
+		while (re.hasNext()) {
+			result[i] = (int) re.next();
+			i++;
+		}
+		return result;
+	}
+
+	public static int sumDivisors(int number) {
+		int sum = 0;
+		List<Integer> array = new ArrayList<Integer>();
+		for (int i = 1; i <= number; i++) {
+			if (number % i == 0) {
+				array.add(i);
+			}
+		}
+		for (int i = 0; i < array.size(); i++) {
+			if (!isPrime(array.get(i))) {
+				sum += array.get(i);
+			}
+		}
+		return sum;
 	}
 }
