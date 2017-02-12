@@ -3,7 +3,7 @@ package onboarding;
 import java.util.Arrays;
 import java.util.List;
 
-import onboarding.collection.CollectionUtils;
+import onboarding.utils.CollectionUtils;
 
 import org.junit.Assert;
 import org.junit.Test;
